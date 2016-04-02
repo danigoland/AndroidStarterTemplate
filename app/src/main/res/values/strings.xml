@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroidTemplate</string>
+
+    <string name="error.message.network">Network error</string>
+    <string name="mainactivity.saripaar.button">Saripaar Example</string>
+    <string name="mainactivity.rv.button">RecyclerView Example</string>
+    <string name="hint.email">Email</string>
+    <string name="hint.creditcard">Credit Card</string>
+    <string name="saripaar.validate">Validate</string>
+</resources>
