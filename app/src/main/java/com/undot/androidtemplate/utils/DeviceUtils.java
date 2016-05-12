@@ -1,10 +1,19 @@
 package com.undot.androidtemplate.utils;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by 0503337710 on 02/04/2016.
@@ -61,5 +70,69 @@ public class DeviceUtils {
     }
     public static String getManufacturer() {
         return Build.MANUFACTURER;
+    }
+
+    public List<App> getInstalledApp(Context context)
+    {
+        PackageManager pm = context.getPackageManager();
+        List<ApplicationInfo> packages = pm.getInstalledApplications(128);
+        Intent mainIntent = new Intent("android.intent.action.MAIN", null);
+        mainIntent.addCategory("android.intent.category.LAUNCHER");
+        List<ResolveInfo> pkgAppsList = pm.queryIntentActivities(mainIntent, 0);
+        List<App> apps = new ArrayList(pkgAppsList.size());
+        Set<String> apsNames = new HashSet(pkgAppsList.size());
+        String s;
+        for (ResolveInfo resInfo : pkgAppsList)
+        {
+            String resName = resInfo.activityInfo.name;String resPackage = resInfo.activityInfo.packageName;
+            for (ApplicationInfo appInfo : packages)
+            {
+                String appPackage = appInfo.packageName;
+
+                    apps.add(new App(appPackage, appInfo.flags));
+                    apsNames.add(appPackage);
+                    break;
+
+            }
+            s = resName;
+        }
+
+        return apps;
+    }
+    private class App
+    {
+        private String name;
+        private int flags;
+
+        public App(String name, int flags)
+        {
+            this.name = name;
+            this.flags = flags;
+        }
+
+        public String getName()
+        {
+            return this.name;
+        }
+
+        public void setName(String name)
+        {
+            this.name = name;
+        }
+
+        public int getFlags()
+        {
+            return this.flags;
+        }
+
+        public void setFlags(int flags)
+        {
+            this.flags = flags;
+        }
+
+        public String toString()
+        {
+            return "{name:'" + this.name + '\'' + ", flags:" + this.flags + '}';
+        }
     }
 }

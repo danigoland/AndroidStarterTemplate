@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -28,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.TimeZone;
@@ -309,4 +312,21 @@ public class GeneralUtils {
         Random rand = new Random();
         return rand.nextInt(number);
     }
+    public Location getLastKnownLocation(Context ctx)
+    {
+        LocationManager locationManager = (LocationManager)ctx.getSystemService("location");
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers)
+        {
+            Location l = locationManager.getLastKnownLocation(provider);
+            if (l != null) {
+                if ((bestLocation == null) || (l.getAccuracy() < bestLocation.getAccuracy())) {
+                    bestLocation = l;
+                }
+            }
+        }
+        return bestLocation;
+    }
+
 }
