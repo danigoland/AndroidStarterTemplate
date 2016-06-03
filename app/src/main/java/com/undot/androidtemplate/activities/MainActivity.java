@@ -11,6 +11,7 @@ import com.undot.androidtemplate.R;
 import com.undot.androidtemplate.network.NetworkController;
 import com.undot.androidtemplate.network.requests.LoginRequest;
 import com.undot.androidtemplate.network.responses.LoginResponse;
+import com.undot.androidtemplate.utils.LogUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -18,7 +19,6 @@ import org.greenrobot.eventbus.Subscribe;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
     public void loginResponse(LoginResponse event){
             if(event.isSuccess())
             {
-                Timber.d("login success! from MainActivity");
+                LogUtil.d(null,"login success! from MainActivity");
             }
         else {
-                Timber.d("login failed from MainActivity");
+                LogUtil.d(null,"login failed from MainActivity");
             }
     }
 

@@ -38,7 +38,6 @@ dependencies {
     compile 'com.github.hotchemi:permissionsdispatcher:2.1.0'
     compile 'com.mobsandgeeks:android-saripaar:2.0.3'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
-    compile 'com.jakewharton.timber:timber:4.1.2'
     compile 'org.greenrobot:eventbus:3.0.0'
 
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
@@ -46,4 +45,5 @@ dependencies {
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
 
 
+    compile 'org.jetbrains:annotations:13.0'
 }

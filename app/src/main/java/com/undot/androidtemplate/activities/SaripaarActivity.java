@@ -14,6 +14,7 @@ import com.undot.androidtemplate.R;
 import com.undot.androidtemplate.network.NetworkController;
 import com.undot.androidtemplate.network.responses.LoginResponse;
 import com.undot.androidtemplate.utils.GeneralUtils;
+import com.undot.androidtemplate.utils.LogUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -23,7 +24,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import timber.log.Timber;
 
 public class SaripaarActivity extends AppCompatActivity implements Validator.ValidationListener {
 
@@ -71,10 +71,10 @@ public class SaripaarActivity extends AppCompatActivity implements Validator.Val
     public void loginResponse(LoginResponse event){
         if(event.isSuccess())
         {
-            Timber.d("login success! from SaripaarActivity");
+            LogUtil.d(null,"login success! from SaripaarActivity");
         }
         else {
-            Timber.d("login failed from SaripaarActivity");
+            LogUtil.d(null,"login failed from SaripaarActivity");
         }
     }
     @Override

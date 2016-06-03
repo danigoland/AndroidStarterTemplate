@@ -35,7 +35,6 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.TimeZone;
 
-import timber.log.Timber;
 
 /**
  * Created by 0503337710 on 02/04/2016.
@@ -84,7 +83,7 @@ public class GeneralUtils {
             if (view != null) {
                 view.setVisibility(View.GONE);
             } else {
-                Timber.e(MyApp.TAG, "The view is null");
+                LogUtil.e(MyApp.TAG, "The view is null");
                 
             }
         }
@@ -93,7 +92,7 @@ public class GeneralUtils {
         if (view != null) {
             view.setVisibility(View.INVISIBLE);
         } else {
-            Timber.e(MyApp.TAG, "The view is null");
+            LogUtil.e(MyApp.TAG, "The view is null");
         }
     }
 
@@ -101,7 +100,7 @@ public class GeneralUtils {
         if (view != null) {
             view.setVisibility(View.VISIBLE);
         } else {
-            Timber.e(MyApp.TAG, "The view is null");
+            LogUtil.e(MyApp.TAG, "The view is null");
         }
     }
 

@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.squareup.leakcanary.LeakCanary;
 
-import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -19,11 +18,8 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree());
-        } else {
-            //Timber.plant(new CrashReportingTree());
-        }
+
+
         LeakCanary.install(this);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()

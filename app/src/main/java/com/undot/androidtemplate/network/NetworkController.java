@@ -2,13 +2,13 @@ package com.undot.androidtemplate.network;
 
 import com.undot.androidtemplate.network.requests.LoginRequest;
 import com.undot.androidtemplate.network.responses.LoginResponse;
+import com.undot.androidtemplate.utils.LogUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import timber.log.Timber;
 
 /**
  * Created by 0503337710 on 03/04/2016.
@@ -35,7 +35,7 @@ public class NetworkController {
         instance.networkManager.service.loginUser(token).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                Timber.i("Json Response %s",response.isSuccessful());
+                LogUtil.d(null,"Json Response %s", response.isSuccessful());
                 LoginResponse loginResponse =response.body();
                 loginResponse.setSuccess(true);
                 EventBus.getDefault().post(loginResponse);

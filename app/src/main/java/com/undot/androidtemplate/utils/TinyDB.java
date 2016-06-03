@@ -39,7 +39,6 @@ package com.undot.androidtemplate.utils;
         import android.preference.PreferenceManager;
         import android.text.TextUtils;
 
-        import timber.log.Timber;
 
 
 public class TinyDB {
@@ -124,7 +123,7 @@ public class TinyDB {
 
         if (isExternalStorageReadable() && isExternalStorageWritable() && !mFolder.exists()) {
             if (!mFolder.mkdirs()) {
-                Timber.e("ERROR", "Failed to setup folder");
+                LogUtil.e("ERROR", "Failed to setup folder");
                 return "";
             }
         }
